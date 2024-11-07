@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: testtt
-        image: inflame616/testtt:latest
+        image: jssmu/testtt:latest
         ports:
         - containerPort: 80
 ---
