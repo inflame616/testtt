@@ -1,10 +1,10 @@
 FROM nginx:alpine
 
-# Copy tất cả file vào thư mục web của nginx
+# Copy tất cả file từ thư mục hiện tại vào /usr/share/nginx/html
 COPY . /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
 
-# Nginx sẽ tự động start
+# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
