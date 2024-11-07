@@ -1,27 +1,36 @@
 pipeline {
-    agent any 
+    agent any
+    
+    environment {
+        DOCKER_IMAGE = "jssmu/testtt"
+        DOCKER_TAG = "${BUILD_NUMBER}"
+    }
+    
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                // Thêm các lệnh build ở đây, ví dụ:
-                // sh 'npm install' // Nếu bạn đang sử dụng Node.js
+                sh 'docker build -t $DOCKER_IMAGE:$DOCKER_TAG .'
             }
         }
-        stage('Test') {
+        
+        stage('Push') {
             steps {
-                echo 'Testing..'
-                // Thêm các lệnh test ở đây, ví dụ:
-                // sh 'npm test' // Nếu bạn đang sử dụng Node.js
+                echo 'Pushing...'
+                withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    sh '''
+                        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+                        docker push $DOCKER_IMAGE:$DOCKER_TAG
+                    '''
+                }
             }
         }
+        
         stage('Deploy') {
             steps {
                 echo 'Deploying..'
-                // Thêm các lệnh deploy ở đây
-                // Ví dụ: sử dụng kubectl để deploy
-                // Cần đảm bảo rằng kubectl đã được cấu hình và có quyền truy cập vào cluster
                 sh 'kubectl apply -f ~/deployment.yaml'
+                sh 'kubectl set image deployment/testtt-app testtt=$DOCKER_IMAGE:$DOCKER_TAG'
             }
         }
     }
