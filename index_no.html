@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style>
+  /*  .main{
+      align-items: center;
+      height: 500px;
+      width:100%;
+      border: 1px solid red;
+      display: grid;
+      grid-template-columns: repeat(3,1fr) 321px;
+      grid-template-rows:250px 250px;
+      
+      grid-gap: 0px ;
+    }
+    .item{
+      background: red;
+    }
+    
+  .item1{
+    background: #666;
+
+        }*/
+        
+.main{
+  width:100%;
+  display: flex;
+  flex:wrap;
+  
+  flex-direction: row;
+gap:15px;
+}
+
+.main .item{
+  display: flex;
+  height: 125px;
+  width: 100%;
+  background: #eee;
+  flex-direction: row;
+  gap:5px;
+}
+
+.main .item .box-1 span{
+display: flex;
+font-size: 25px;
+flex-basis: 50%;
+  background: #fff;
+
+}
+
+.main  .item .box-2{
+display: flex;
+  background: #fff;
+flex-basis: 50%;
+
+flex-direction: column;
+    
+
+}
+
+.main div .item1 {
+      height:100%;
+      width: 100%;
+
+  background: red;
+
+}
+
+.benner-1{
+  margin: 2rem 0rem 2rem 0rem;
+}
+ 
+.cantener{
+  /*display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #333;
+  flex-direction: row;
+  flex-wrap :wrap;*/
+  display: grid;
+    background: #333;
+
+  grid-template-columns: repeat(3,1fr);
+}
+
+.cantener .img{
+background-size: cover;
+  background-position: top;
+height: 100%;
+width:60%;
+      animation: img 7s forwards infinite;
+      
+      
+}
+@keyframes img{
+  0%{
+background-size: cover;
+    background: url("img/home/none-bg/1.jpg");
+
+  }
+  
+   25% {
+     background: url("img/home/none-bg/4.jpg");
+ background-size: cover;
+
+   } 
+   50% {
+       background: url("img/home/none-bg/3.jpg");
+   background-size: cover;
+
+     }  
+     75% {
+  background: url("img/home/none-bg/2.jpg");
+     background-size: cover;
+
+       }
+       
+     100%{
+         background: url("img/home/none-bg/1.jpg");
+
+     }
+
+}
+
+
+ .cantener .text-btu {
+   width:100%;
+   height: 100%;
+   padding-left: 1rem;
+
+   
+ }
+
+ .cantener .text-btu .btu {
+   width:30%;
+   background: #ddd;
+   margin-top: 1rem;
+ }
+
+  .text-btu {
+    font-family: 'League Spartan', sans-serif;
+
+    z-index: 1;
+    text-transform: capitalize;
+    font-size: 10px;
+    position: relative;
+    top: 30px;
+    text-align: left;
+    left: 4px;
+    height: 50%;
+    width: 50%;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
+  }
+
+  .text-btu h1 {
+    font-family: 'League Spartan', sans-serif;
+
+    font-size: 2.5rem;
+    font-weight: 1000;
+    margin: 5px;
+
+
+
+  }
+
+  .text-btu h3 {
+    margin: 0px 0px 5px 5px;
+    color: #444;
+    font-weight: 700;
+
+    font-size: 1.5rem;
+
+  }
+
+  .btu {
+    color: #333;
+    border: none;
+    font-size: 1rem;
+    font-weight: 800;
+    background: #fff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8rem;
+    width: 70%;
+  }
+
+  .btu:hover {
+    border: .2rem solid #fff;
+    background: transparent;
+    color: #fff;
+
+  }
+  
+  
+  .benner-2{
+    display: flex;
+    width: 100%;
+    min-height: 40rem;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .benner{
+    height: 20rem;
+    display: flex;
+   background: #333;
+    flex-direction: row;
+    width:100%;
+        justify-content: center;
+        align-items: center;
+  }
+  
+  .benner .text-1{
+    font-size: 2rem;
+    text-transform: uppercase;
+    width:32rem;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    color: #555;
+  }
+    .benner .text-1 h1{
+      font-weight: 700;
+      margin:0;
+      font-size: 3.2rem;
+    }
+    
+    .benner .text-1 h3{
+      text-transform: capitalize;
+    }
+    
+   .benner .text-2{
+     background: #555;
+   }
+
+
+  .benner .img-b{
+    z-index: 12;
+    position: relative;
+    top:-1rem;
+    left: -15.0%;
+    width:40%;
+  }
+    .benner .img-b img{
+      transform: scale(1.5) rotate(-15deg);
+      width: 100%;
+      animation: play 3s alternate infinite ;
+    }
+    
+    @keyframes play{
+      to{
+        transform: rotate(15deg)  scale(1.6) ;
+      }
+      form{
+      transform: rotate(-15deg)  scale(1.3);
+
+      }
+    }
+   /*----*/
+
+/*----*/
+  </style>
+</head>
+
+<body>
+<!--<div class="main">
+  <div>
+      <div class="item">
+    
+      </div>
+      <div class="item">
+    
+      </div>
+      <div class="item1">
+    
+      </div>
+  </div>
+  <div>
+      <div class="item">
+    
+      </div>
+      <div class="item">
+    
+      </div>
+      <div class="item1">
+    
+      </div>
+  </div>
+
+
+</div>-->
+
+
+<a target="_blank" href="https://www.amazon.in/b?_encoding=UTF8&tag=mohitvijay-21&linkCode=ur2&linkId=f2b0f72272b6bbc05344bfa840d7ef77&camp=3638&creative=24630&node=1374494031">Yoga meet </a>
+
+
+<div class="main">
+  <div class="item">
+    <div class="box-1">
+      <span>&#8833;</span>
+    </div>
+    <div class="box-2">
+      <h3>free delever</h3>
+      <p>only first order affter paid 40 &#8888;</p>
+    </div>
+  </div>
+    <div class="item">
+    <div class="box-1">
+      <span>&#8833;</span>
+    </div>
+    <div class="box-2">
+      <h3>free delever</h3>
+      <p>only first order affter paid 40 &#8888;</p>
+    </div>
+  </div>
+  <div class="item">
+    <div class="box-1">
+      <span>&#8833;</span>
+    </div>
+    <div class="box-2">
+      <h3>free delever</h3>
+      <p>only first order affter paid 40 &#8888;</p>
+    </div>
+  </div>
+  <div class="item">
+    <div class="box-1">
+      <span>&#8833;</span>
+    </div>
+    <div class="box-2">
+      <h3>free delever</h3>
+      <p>only first order affter paid 40 &#8888;</p>
+    </div>
+  </div>
+
+</div>
+
+<section class="benner-1">
+  <div class="cantener">
+        <div class="text-btu">
+      <h1>summer anime t-shirt</h1>
+      <h3>sale 50% off</h3>
+      <button class="btu" type="submit">shop now</button>
+    </div>
+    <div class="img">
+      
+    </div>
+     <div class="text-btu">
+      <h1>summer anime t-shirt</h1>
+      <h3>sale 50% off</h3>
+    </div>
+
+  </div>
+  
+
+</section>
+
+<section class="benner-2">
+  <div class="benner">
+    <div class="text-1">
+     <h3>up to 30% off</h3>
+    <h1>summer sale</h1>
+    </div>
+<div class="img-b">
+  <img  src="1.jpg" alt="">
+</div>
+  </div>
+</section>
+</body>
+<script>
+  var images = document.getElementById('img');
+  
+ setInterval(()=>{
+  },1000);
+</script>
+</html>
