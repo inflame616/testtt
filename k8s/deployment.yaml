@@ -20,5 +20,4 @@ spec:
           mountPath: /usr/share/nginx/html
       volumes:
       - name: web-content
-        persistentVolumeClaim:
-          claimName: web-content-pvc
+        emptyDir: {}  # Tạm thời dùng emptyDir
