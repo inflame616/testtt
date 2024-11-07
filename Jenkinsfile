@@ -1,36 +1,24 @@
 pipeline {
     agent any
-    
     environment {
-        DOCKER_IMAGE = "jssmu/testtt"
-        DOCKER_TAG = "${BUILD_NUMBER}"
+        PROJECT_ID = 'steam-nuance-439700-g0'
+        CLUSTER_NAME = 'my-cluster'
+        LOCATION = 'asia-southeast1-a'
     }
-    
     stages {
-        stage('Build') {
+        stage('Build and Push') {
             steps {
-                echo 'Building..'
-                sh 'docker build -t $DOCKER_IMAGE:$DOCKER_TAG .'
+                sh '''
+                    gcloud builds submit --tag gcr.io/$PROJECT_ID/testtt:$BUILD_NUMBER .
+                '''
             }
         }
-        
-        stage('Push') {
-            steps {
-                echo 'Pushing...'
-                withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh '''
-                        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-                        docker push $DOCKER_IMAGE:$DOCKER_TAG
-                    '''
-                }
-            }
-        }
-        
         stage('Deploy') {
             steps {
-                echo 'Deploying..'
-                sh 'kubectl apply -f ~/deployment.yaml'
-                sh 'kubectl set image deployment/testtt-app testtt=$DOCKER_IMAGE:$DOCKER_TAG'
+                sh '''
+                    gcloud container clusters get-credentials $CLUSTER_NAME --zone $LOCATION --project $PROJECT_ID
+                    kubectl apply -f k8s/deployment.yaml
+                '''
             }
         }
     }
