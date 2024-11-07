@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         GCP_USER = 'inflame616'
-        GCP_HOST = '<your-gcp-instance-ip>'
+        GCP_HOST = '35.240.247.92'  // IP của instance web1
     }
     stages {
         stage('Deploy Code') {
