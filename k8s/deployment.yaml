@@ -18,6 +18,12 @@ spec:
         volumeMounts:
         - name: web-content
           mountPath: /usr/share/nginx/html
+        - name: nginx-config
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
       volumes:
       - name: web-content
-        emptyDir: {}  # Tạm thời dùng emptyDir
+        emptyDir: {}
+      - name: nginx-config
+        configMap:
+          name: nginx-config
